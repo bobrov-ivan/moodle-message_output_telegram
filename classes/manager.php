@@ -67,7 +67,7 @@ class manager {
             return true;
         }
 
-        $response = $this->send_api_command('sendMessage', ['chat_id' => $chatid, 'text' => html_to_text($message]));
+        $response = $this->send_api_command('sendMessage', ['chat_id' => $chatid, 'text' => html_to_text($message)]);
         return (!empty($response) && isset($response->ok) && ($response->ok == true));
     }
 
