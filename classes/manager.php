@@ -66,9 +66,9 @@ class manager {
         } else if (empty($chatid = get_user_preferences('message_processor_telegram_chatid', '', $userid))) {
             return true;
         }
-/**
-remove  <p>...</p> and <a href="...">...</a>
-*/
+        /**
+         * remove  <p>...</p> and <a href="...">...</a>
+         */
         $msg = preg_replace('/<p>((.|\n)*)<\/p>/', '${1}', $message);
         $msg = preg_replace('/<a href=[^>]*>(.*)<\/a>/','${1}',$msg);
         $response = $this->send_api_command('sendMessage', ['chat_id' => $chatid, 'text' => $msg]);
