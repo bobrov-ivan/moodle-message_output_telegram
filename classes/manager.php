@@ -56,7 +56,7 @@ class manager {
 
     /**
      * Send the message to Telegram.
-     * @param string $message The message contect to send to Slack.
+     * @param string $message The message contect to send to Telegram.
      * @param int $userid The Moodle user id that is being sent to.
      */
     public function send_message($message, $userid) {
@@ -210,7 +210,7 @@ class manager {
     }
 
     /**
-     * Get the latest information from the Slack bot, and see if the user has initiated a connection.
+     * Get the latest information from the Telegram bot, and see if the user has initiated a connection.
      * Only needed if no webHook has been created.
      * @param int $userid The id of the user in question.
      * @return boolean Success.
@@ -229,7 +229,7 @@ class manager {
             if ($results !== false) {
                 foreach ($results as $object) {
                     if (isset($object->message)) {
-                        if ($this->usersecret_match(substr($object->message->text, strlen('/start ')))) {
+                        if ($this->usersecret_match(substr($object->message->text, strlen('/start')))) {
                             set_user_preference('message_processor_telegram_chatid', $object->message->chat->id, $userid);
                             break;
                         }
